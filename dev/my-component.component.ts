@@ -1,4 +1,5 @@
 import {Component} from "angular2/core"
+import {TestComponent} from './test.component'
 
 @Component({
   selector: "my-component",
@@ -11,7 +12,9 @@ import {Component} from "angular2/core"
     <br>
     <br>
     <button [disabled]="input.value !== 'yes'">Enable if type 'yes'</button>
+    <test></test>
   `,
+  directives: [TestComponent]
   styleUrls: ["src/css/my-component.css"]
 })
 export class MyComponentComponent{
