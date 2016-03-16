@@ -1,4 +1,4 @@
-import {Component} from "angular2/core"
+import {Component, OnInit} from "angular2/core"
 import {TestComponent} from './test.component'
 
 @Component({
@@ -14,9 +14,14 @@ import {TestComponent} from './test.component'
     <button [disabled]="input.value !== 'yes'">Enable if type 'yes'</button>
     <test></test>
   `,
-  directives: [TestComponent]
+  directives: [TestComponent],
   styleUrls: ["src/css/my-component.css"]
 })
-export class MyComponentComponent{
-  name = "zhulinpinyu"
+export class MyComponentComponent implements OnInit{
+  name:String;
+
+  ngOnInit(){
+    this.name = "zhulinpinyu"
+  }
+
 }
