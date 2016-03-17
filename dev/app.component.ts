@@ -4,10 +4,10 @@ import {HighLightDirective} from './highlight.directive';
 @Component({
     selector: 'app',
     template: `
-      <div myHighLight>Highlight</div>
+      <div [myHighLight]>Highlight</div>
       <br />
       <br />
-      <div myHighLight>Second HighLight</div>
+      <div [myHighLight]="'yellow'">Second HighLight</div>
     `,
     directives: [HighLightDirective]
 })
