@@ -1,9 +1,10 @@
-import {Component,EventEmitter} from 'angular2/core'
+import {Component,EventEmitter} from 'angular2/core';
 
 @Component({
-  selector: 'my-input',
+  selector: 'my-confirm',
   template: `
-    <h1>Your Details,Please</h1>
+    <h2>Pls confirm yourself info:</h2>
+    <p>Your name is <span class="highlight">{{myself.name}}</span>,Your age is <span class="highlight">{{myself.age}}</span> years old.</p>
     <div>
       <label for="name">Your Name:</label>
       <input type="text" id="name" [(ngModel)]="myself.name" (keyup)="onKeyup()"/>
@@ -16,16 +17,16 @@ import {Component,EventEmitter} from 'angular2/core'
     <div>isFilled: {{isFilled ? 'Yes' : 'No'}}</div>
     <div>isValid: {{isValid ? 'Yes' : 'No'}}</div>
     <br />
-    <button [disabled]="!isValid" (click)="onsubmit()">submit</button>
+    <button [disabled]="!isValid" (click)="onsubmit()">confirm</button>
   `,
-  outputs: ['submitted'],
+  outputs: ['confirmed'],
   inputs: ['myself']
 })
-export class InputComponent{
-  myself = {name: '', age: ''}
+export class ConfirmComponent{
+  myself = {name: '',age: ''}
   isFilled = false
   isValid = false
-  submitted = new EventEmitter<{name:string, age:string}>()
+  confirmed = new EventEmitter<{name:string, age:string}>()
 
   onKeyup(){
     if(this.myself.name !='' && this.myself.age !=''){
@@ -42,6 +43,6 @@ export class InputComponent{
   }
 
   onsubmit(){
-    this.submitted.emit(this.myself)
+    this.confirmed.emit(this.myself)
   }
 }
