@@ -6,8 +6,7 @@ import {LoggingService} from './services/logging.service'
     template: `
         <input type="text" #input/>
         <button (click)="onClick(input.value)">Send</button>
-    `,
-    providers: [LoggingService]
+    `
 })
 export class Component2Component{
     constructor(private _loggingService: LoggingService){}
