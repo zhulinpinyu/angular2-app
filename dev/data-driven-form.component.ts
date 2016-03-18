@@ -8,18 +8,18 @@ import {ControlGroup, FormBuilder, Validators} from 'angular2/common'
         <form [ngFormModel]="myForm" (ngSubmit)="onSubmit()">
             <div>
                 <label for="email">Email</label>
-                <input [ngFormControl]="myForm.controls['email']" type="text" id="email" required/>
-                <span class="validation-error">Not Valid</span>
+                <input [ngFormControl]="myForm.controls['email']" type="text" id="email" required #email="ngForm"/>
+                <span class="validation-error" *ngIf="!email.valid">Not Valid</span>
             </div>
             <div>
                 <label for="password">Password</label>
-                <input [ngFormControl]="myForm.controls['password']" type="password" id="password" required/>
-                <span class="validation-error">Not Valid</span>
+                <input [ngFormControl]="myForm.controls['password']" type="password" id="password" required #password="ngForm"/>
+                <span class="validation-error" *ngIf="!password.valid">Not Valid</span>
             </div>
             <div>
                 <label for="confirm-password">Confirm Password</label>
-                <input [ngFormControl]="myForm.controls['confirmPassword']" type="password" id="confirm-password" required/>
-                <span class="validation-error">Not Valid</span>
+                <input [ngFormControl]="myForm.controls['confirmPassword']" type="password" id="confirm-password" required #confirmPassword="ngForm"/>
+                <span class="validation-error" *ngIf="!confirmPassword.valid">Not Valid</span>
             </div>
             <button type="submit">Submit</button>
         </form>
@@ -44,6 +44,7 @@ export class DataDrivenFormComponent implements OnInit{
     }
 
     onSubmit(){
-        console.log(this.myForm);
+        this.user = this.myForm.value
+        console.log(this.myForm)
     }
 }
