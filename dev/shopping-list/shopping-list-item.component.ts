@@ -11,7 +11,7 @@ import {ShoppingListService} from './shopping-list.service'
         </div>
         <div class="input">
             <label for="item-amt">Amount</label>
-            <input type="text" id="item-amt" [(ngModel)]="item.amount"/>
+            <input type="number" id="item-amt" [(ngModel)]="item.amount"/>
         </div>
         <button class="danger" (click)="onDelete()">Delete Item</button>
     `,

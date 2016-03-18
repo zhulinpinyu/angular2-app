@@ -13,7 +13,7 @@ import {ShoppingListService} from './shopping-list.service'
             </div>
             <div class="input">
                 <label for="item-amt">Amount</label>
-                <input type="text" id="item-amt" [(ngModel)]="item.amount" [ngFormControl]="myForm.controls['itemAmount']"/>
+                <input type="number" id="item-amt" [(ngModel)]="item.amount" [ngFormControl]="myForm.controls['itemAmount']"/>
             </div>
             <button type="submit" [disabled]="!myForm.valid" >Add Item</button>
         </form>
