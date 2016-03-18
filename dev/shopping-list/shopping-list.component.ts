@@ -1,13 +1,14 @@
-import {Component} from 'angular2/core'
+import {Component,OnInit} from 'angular2/core'
 import {ShoppingListNewItemComponent} from './shopping-list-new-item.component'
 import {ListItem} from '../list-item'
 import {ShoppingListItemComponent} from './shopping-list-item.component'
+import {ShoppingListService} from './shopping-list.service'
 
 @Component({
     selector: 'shopping-list',
     template: `
         <section>
-            <shopping-list-new-item (itemAdded)="onItemAdded($event)"></shopping-list-new-item>
+            <shopping-list-new-item></shopping-list-new-item>
         </section>
         <section>
             <h3>My List</h3>
@@ -23,22 +24,23 @@ import {ShoppingListItemComponent} from './shopping-list-item.component'
             <shopping-list-item [item]="selectItem" (remove)="onRemove($event)" ></shopping-list-item>
         </section>
     `,
-    directives:[ShoppingListNewItemComponent,ShoppingListItemComponent]
+    directives:[ShoppingListNewItemComponent,ShoppingListItemComponent],
+    providers: [ShoppingListService]
 })
-export class ShoppingListComponent{
-    itemList = new Array<ListItem>();
+export class ShoppingListComponent implements OnInit{
+    itemList:Array<ListItem>;
     selectItem: ListItem
+    constructor(private _shoppingListSerivce:ShoppingListService){}
 
-    onItemAdded(item: ListItem){
-        this.itemList.push({name: item.name,amount: item.amount})
+    ngOnInit(){
+        this.itemList = this._shoppingListSerivce.getItems();
     }
 
     onSelected(item: ListItem){
         this.selectItem = item;
     }
 
-    onRemove(item: ListItem){
-        this.itemList.splice(this.itemList.indexOf(item),1)
+    onRemove(item: any){
         this.selectItem = null
     }
 }
