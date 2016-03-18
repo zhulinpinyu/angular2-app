@@ -1,16 +1,12 @@
 import {Component} from 'angular2/core';
-import {Component1Component} from './component1.component'
-import {Component2Component} from './component2.component'
+import {TemplateDrivenFormComponent} from './template-driven-form.component'
 
 @Component({
     selector: 'app',
     template: `
-      <h1>First Component</h1>
-      <component-1></component-1>
-      <h1>Second Component</h1>
-      <component-2></component-2>
+      <template-driven-form></template-driven-form>
     `,
-    directives: [Component1Component, Component2Component]
+    directives: [TemplateDrivenFormComponent]
 })
 export class AppComponent{
   
