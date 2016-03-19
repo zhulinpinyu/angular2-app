@@ -42,9 +42,18 @@ import {ReversePipe} from './reverse.pipe'
             <input type="text" #inputCustom (keyup)="0"><br>
             <div>Output: {{inputCustom.value|myReverse}}</div>
         </section>
+
+        <section class="pipe">
+            <h2>(异步数据加载) stateful Pipe (Async display)</h2>
+            <div>Output: {{statefulPipeOutput|async}}</div>
+        </section>
+
     `,
     pipes: [ReversePipe]
 })
 export class AppComponent{
   today = new Date()
+  statefulPipeOutput = new Promise((resolve,reject)=>{
+      setTimeout(()=> resolve("Data is here."), 2000)
+  })
 }
