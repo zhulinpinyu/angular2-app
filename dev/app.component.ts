@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core'
+import {ReversePipe} from './reverse.pipe'
 
 @Component({
     selector: 'app',
@@ -35,7 +36,14 @@ import {Component} from 'angular2/core'
             <input type="text" #inputChainPipes (keyup)="0"><br>
             <div>Output: {{inputChainPipes.value | slice:1-3 | uppercase}}</div>
         </section>
-    `
+
+        <section class="pipe">
+            <h2>Custom Pipe (Reverse string)</h2>
+            <input type="text" #inputCustom (keyup)="0"><br>
+            <div>Output: {{inputCustom.value|myReverse}}</div>
+        </section>
+    `,
+    pipes: [ReversePipe]
 })
 export class AppComponent{
   today = new Date()
