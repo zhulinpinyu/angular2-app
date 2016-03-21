@@ -12,6 +12,6 @@ export class LucyComponent{
     constructor(private _router: Router){}
 
     onNav(){
-        this._router.navigate(['Tom'])
+        this._router.navigate(['Tom',{sex: 'mannnn'}])
     }
 }

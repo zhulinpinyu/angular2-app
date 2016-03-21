@@ -7,7 +7,7 @@ import {LucyComponent} from './lucy.component'
     selector: 'app',
     template: `
         <ul>
-            <li><a [routerLink]="['Tom']" >Tom</a></li>
+            <li><a [routerLink]="['Tom',{sex: 'man',opt: 'this is optional'}]" >Tom</a></li>
             <li><a [routerLink]="['Lucy']" >Lucy</a></li>
         </ul>
         <router-outlet></router-outlet>
@@ -15,7 +15,7 @@ import {LucyComponent} from './lucy.component'
     directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-    { path: '/tom', name: 'Tom', component: TomComponent, useAsDefault: true },
+    { path: '/tom/:sex', name: 'Tom', component: TomComponent, useAsDefault: true },
     { path: '/lucy', name: 'Lucy', component: LucyComponent }
 ])
 export class AppComponent{
