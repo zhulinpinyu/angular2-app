@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core'
-import {RouteConfig, ROUTER_PROVIDERS, ROUTER_DIRECTIVES} from 'angular2/router'
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router'
 import {TomComponent} from './tom.component'
 import {LucyComponent} from './lucy.component'
 
@@ -12,8 +12,7 @@ import {LucyComponent} from './lucy.component'
         </ul>
         <router-outlet></router-outlet>
     `,
-    directives: [ROUTER_DIRECTIVES],
-    providers: [ROUTER_PROVIDERS]
+    directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
     { path: '/tom', name: 'Tom', component: TomComponent, useAsDefault: true },
