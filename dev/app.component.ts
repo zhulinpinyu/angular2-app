@@ -15,7 +15,7 @@ import {LucyComponent} from './lucy.component'
     directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-    { path: '/tom/:sex', name: 'Tom', component: TomComponent, useAsDefault: true },
+    { path: '/tom/:sex/...', name: 'Tom', component: TomComponent, useAsDefault: true },
     { path: '/lucy', name: 'Lucy', component: LucyComponent }
 ])
 export class AppComponent{

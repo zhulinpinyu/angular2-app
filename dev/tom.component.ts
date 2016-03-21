@@ -1,5 +1,7 @@
 import {Component, OnInit} from 'angular2/core'
-import {RouteParams} from 'angular2/router'
+import {RouteParams, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router'
+import {TomMainComponent} from './tom-main.component'
+import {TomSubComponent} from './tom-sub.component'
 
 @Component({
     selector: 'tom',
@@ -8,8 +10,20 @@ import {RouteParams} from 'angular2/router'
         I am really <b>{{sex}}</b>
           <br />
         {{opt}}
-    `
+
+        <ul>
+            <li><a [routerLink]="['TomMain']">Main</a></li>
+            <li><a [routerLink]="['TomSub']">Sub</a></li>
+        </ul>
+        <router-outlet></router-outlet>
+    `,
+    directives: [ROUTER_DIRECTIVES]
 })
+@RouteConfig([
+    {path: '/', name: 'TomMain', component: TomMainComponent, useAsDefault: true},
+    { path: '/sub', name: 'TomSub', component: TomSubComponent},
+
+])
 export class TomComponent implements OnInit{
     sex:string
     opt:string
