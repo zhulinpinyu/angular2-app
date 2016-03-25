@@ -1,23 +1,45 @@
 import {Component} from 'angular2/core'
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router'
-import {TomComponent} from './tom.component'
-import {LucyComponent} from './lucy.component'
+import {DataService} from './data.service'
 
 @Component({
     selector: 'app',
     template: `
-        <ul>
-            <li><a [routerLink]="['Tom',{sex: 'man',opt: 'this is optional'}]" >Tom</a></li>
-            <li><a [routerLink]="['Lucy']" >Lucy</a></li>
-        </ul>
-        <router-outlet></router-outlet>
+        <div>
+            <div class="input">
+                <label for="title">title</label>
+                <input type="text" id="title" #title/>
+            </div>
+            <div class="input">
+                <label for="Body">body</label>
+                <input type="text" id="body" #body/>
+            </div>
+            <div class="input">
+                <label for="UserID">UserID</label>
+                <input type="text" id="userId" #userId/>
+            </div>
+            <button (click)="onPost(title.value,body.value,userId.value)">Post</button>
+            <button (click)="onGet()">Get Data</button>
+            <div>
+                Response: {{response}}
+            </div>
+        </div>
     `,
-    directives: [ROUTER_DIRECTIVES]
+    providers: [DataService]
 })
-@RouteConfig([
-    { path: '/tom/:sex/...', name: 'Tom', component: TomComponent, useAsDefault: true },
-    { path: '/lucy', name: 'Lucy', component: LucyComponent }
-])
 export class AppComponent{
+    response:string
+    constructor(private _dataService: DataService){}
 
+    onPost(title:string,body:string,userId:string){
+        const data = {
+            title: title,
+            body: body,
+            userId: userId
+        }
+        this._dataService.postData(data)
+            .subscribe(
+                res => this.response = JSON.stringify(res),
+                err => console.log(err)
+            )
+    }
 }
