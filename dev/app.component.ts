@@ -42,4 +42,11 @@ export class AppComponent{
                 err => console.log(err)
             )
     }
+    onGet(){
+      this._dataService.getData()
+        .subscribe(
+          res => this.response = JSON.stringify(res),
+          err => console.error(err)
+        )
+    }
 }
