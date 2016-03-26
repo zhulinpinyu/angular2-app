@@ -1,19 +1,34 @@
 import {Injectable} from 'angular2/core'
 import {Ingredient} from './ingredient'
+import {SHOPPING_LIST} from '../mock/shopping-list.ts'
 
 @Injectable()
 export class ShoppingListService{
-    getAllItems(){}
+    getAllItems(){
+        return SHOPPING_LIST
+    }
 
-    getItem(index: number){}
+    getItem(index: number){
+        return SHOPPING_LIST[index]
+    }
 
-    getIndexOfItem(item: Ingredient){}
+    getIndexOfItem(item: Ingredient){
+        return SHOPPING_LIST.indexOf(item)
+    }
 
-    insertItem(item: Ingredient){}
+    insertItem(item: Ingredient){
+        SHOPPING_LIST.push(item)
+    }
 
-    insertItems(items: Ingredient[]){}
+    insertItems(items: Ingredient[]){
+        Array.prototype.push.apply(SHOPPING_LIST,items)
+    }
 
-    deleteItem(item: Ingredient){}
+    deleteItem(item: Ingredient){
+        SHOPPING_LIST.splice(SHOPPING_LIST.indexOf(item),1)
+    }
 
-    updateItem(index: number, item: Ingredient){}
+    updateItem(index: number, item: Ingredient){
+        SHOPPING_LIST[index] = item
+    }
 }
