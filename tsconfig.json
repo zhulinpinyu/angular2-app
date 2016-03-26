@@ -24,6 +24,8 @@
   },
   "files": [
     "./dev/app.component.ts",
-    "./dev/boot.ts"
+    "./dev/boot.ts",
+    "./dev/shared/ingredient.ts",
+    "./dev/shared/shopping-list.service.ts"
   ]
 }
