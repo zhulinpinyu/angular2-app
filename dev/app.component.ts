@@ -1,5 +1,7 @@
 import {Component} from 'angular2/core'
 import {RecipesComponent} from './recipe-book/recipes.component'
+import {ShoppingListComponent} from './shopping-list/shopping-list.component'
+import {RouteConfig,ROUTER_DIRECTIVES} from 'angular2/router'
 
 @Component({
     selector: 'my-app',
@@ -7,17 +9,22 @@ import {RecipesComponent} from './recipe-book/recipes.component'
         <header>
             <nav>
                 <ul>
-                    <li><a>Recipes</a></li>
-                    <li><a>Shoping List</a></li>
+                    <li><a [routerLink]="['Recipes']">Recipes</a></li>
+                    <li><a [routerLink]="['ShoppingList']">Shoping List</a></li>
                 </ul>
             </nav>
         </header>
         <div class="main">
-            <my-recipes></my-recipes>
+            <router-outlet></router-outlet>
         </div>
     `,
-    directives: [RecipesComponent]
+    directives: [ROUTER_DIRECTIVES]
 })
-export class AppComponent {
+
+@RouteConfig([
+    {path: '/recipes', name: 'Recipes', component: RecipesComponent, useAsDefault: true},
+    { path: '/shopping-list', name: 'ShoppingList', component: ShoppingListComponent }
+])
+export class AppComponent{
 
 }
