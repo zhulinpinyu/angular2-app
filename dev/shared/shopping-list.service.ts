@@ -1,6 +1,6 @@
 import {Injectable} from 'angular2/core'
 import {Ingredient} from './ingredient'
-import {SHOPPING_LIST} from '../mock/shopping-list.ts'
+import {SHOPPING_LIST} from '../mock/shopping-list'
 
 @Injectable()
 export class ShoppingListService{
