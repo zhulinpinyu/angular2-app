@@ -25,7 +25,14 @@
   "files": [
     "./dev/app.component.ts",
     "./dev/boot.ts",
+    "./dev/mock/recipes.ts",
+    "./dev/mock/shopping-list.ts",
+    "./dev/recipe-book/recipe.service.ts",
+    "./dev/recipe-book/recipes.component.ts",
     "./dev/shared/ingredient.ts",
-    "./dev/shared/shopping-list.service.ts"
+    "./dev/shared/recipe.ts",
+    "./dev/shared/shopping-list.service.ts",
+    "./dev/shopping-list/shopping-list-edit.component.ts",
+    "./dev/shopping-list/shopping-list.component.ts"
   ]
 }
