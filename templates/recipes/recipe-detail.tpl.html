@@ -1,0 +1,19 @@
+<div class="info" *ngIf="recipe === null">
+    You need select recipe
+</div>
+<div class="recipe" *ngIf="recipe !== null">
+    <h1>{{recipe.name}}</h1>
+    <span><a (click)="onEdit()">Edit</a>|<a (click)="onDelete()" class="danger">Delete</a></span>
+    <div class="img">
+        <img [src]="recipe.imageUrl">
+    </div>
+    <div class="content">
+        {{recipe.content}}
+    </div>
+    <div class="list">
+        <a class="btn" (click)="addToShoppingList()">Add to shopping list</a>
+        <ul>
+            <li *ngFor="#item of recipe.ingredients">{{item.name}} ({{item.amount}})</li>
+        </ul>
+    </div>
+</div>
