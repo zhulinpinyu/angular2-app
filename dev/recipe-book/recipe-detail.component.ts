@@ -8,11 +8,12 @@ import {RecipeService} from './recipe.service'
 })
 export class RecipeDetailComponent implements OnInit{
     recipe: Recipe
-    private recipeIndex:number
+    private recipeIndex:string
     constructor(private _routerParams: RouteParams,private _recipeService: RecipeService){}
 
     ngOnInit(){
-        this.recipeIndex = +this._routerParams.get("recipeIndex")
-        this.recipe = this._recipeService.getRecipe(this.recipeIndex)||null
+        let index = this._routerParams.get("recipeIndex")
+        this.recipeIndex = index
+        this.recipe = this._recipeService.getRecipe(index != null ? +index : null)||null
     }
 }
